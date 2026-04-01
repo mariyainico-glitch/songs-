@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login & Song List</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        .box {
+            margin-top: 100px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .song-list {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .song {
+            background: #222;
+            padding: 10px;
+            margin: 10px auto;
+            width: 300px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔐 Login Section -->
+<div id="loginBox" class="box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- 🎵 Song List Section -->
+<div id="songSection" class="song-list">
+    <h2>🎶 Welcome! Song List</h2>
+
+    <div class="song">
+        <span>Song 1</span>
+        <button onclick="playSong('song1.mp3')">Play</button>
+    </div>
+
+    <div class="song">
+        <span>Song 2</span>
+        <button onclick="playSong('song2.mp3')">Play</button>
+    </div>
+
+    <div class="song">
+        <span>Song 3</span>
+        <button onclick="playSong('song3.mp3')">Play</button>
+    </div>
+
+    <audio id="player" controls></audio>
+</div>
+
+<script>
+    function login() {
+        var user = document.getElementById("username").value;
+        var pass = document.getElementById("password").value;
+
+        if(user === "admin" && pass === "1234") {
+            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("songSection").style.display = "block";
+        } else {
+            alert("Invalid Login ❌");
+        }
+    }
+
+    function playSong(song) {
+        var audio = document.getElementById("player");
+        audio.src = song;
+        audio.play();
+    }
+</script>
+
+</body>
+</html>
